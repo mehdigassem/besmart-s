@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Facture;
+use App\Entity\Reservation;
 use App\Form\FactureType;
 use App\Repository\FactureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,9 +21,15 @@ class FactureController extends AbstractController
      */
     public function index(FactureRepository $factureRepository): Response
     {
+        $repository = $this->getDoctrine()->getRepository(Facture::class);
+        $facture = $repository->findAll();
+
+        //$step = $facture->getReservation();
+        dump($facture);
+        //dump($step);
 
         return $this->render('facture/index.html.twig', [
-            'factures' => $factureRepository->findAll(),
+            'factures' => $facture,
         ]);
     }
 
