@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FactureController extends AbstractController
 {
     /**
-     * @Route("/", name="facture_index", methods={"GET"})
+     * @Route("/", name="facture_front", methods={"GET"})
      */
     public function index(FactureRepository $factureRepository): Response
     {

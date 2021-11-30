@@ -5,21 +5,26 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
+        <link rel="stylesheet" href="{{ asset('assets/css/reset.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/animated-logo.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/our-team.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('assets/css/reset.css') }}" />
-            <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
-            <link rel="stylesheet" href="{{ asset('assets/css/animated-logo.min.css') }}" />
-            <link rel="stylesheet" href="{{ asset('assets/css/our-team.css') }}" />
-            <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
-            <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
+
 
 
             {# block css link #}
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
+        <script src="{{ asset('assets/js/modernizr.js') }}"></script>
+
         {% block javascripts %}
-            <script src="{{ asset('assets/js/modernizr.js') }}"></script>
 
             {#block javacascript#}
             {#{{ encore_entry_script_tags('app') }}#}

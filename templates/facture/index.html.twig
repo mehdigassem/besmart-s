@@ -21,10 +21,7 @@
                 <td>{{ facture.id }}</td>
                 <td>{{ facture.dateFacture ? facture.dateFacture|date('Y-m-d') : '' }}</td>
                 <td>{{ facture.price }}</td>
-                <td>
-                    <a href="{{ path('facture_show', {'id': facture.id}) }}">show</a>
-                    <a href="{{ path('facture_edit', {'id': facture.id}) }}">edit</a>
-                </td>
+
             </tr>
         {% else %}
             <tr>
