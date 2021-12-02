@@ -29,7 +29,10 @@
             </tr>
         {% endfor %}
         </tbody>
+
     </table>
+    {{ knp_pagination_render(factures) }}
+
 
     <a href="{{ path('facture_new') }}">Create new</a>
 {% endblock %}

@@ -2,14 +2,18 @@
 
 namespace App\Controller;
 
+use Knp\Component\Pager\PaginatorInterface; // Nous appelons le bundle KNP Paginator
+
 use App\Entity\Facture;
 use App\Entity\Reservation;
 use App\Form\FactureType;
 use App\Repository\FactureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;// Nous avons besoin d'accéder à la requête pour obtenir le numéro de page
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+
 
 /**
  * @Route("/facture")
@@ -19,14 +23,16 @@ class FactureController extends AbstractController
     /**
      * @Route("/", name="facture_front", methods={"GET"})
      */
-    public function index(FactureRepository $factureRepository): Response
+    public function index(Request $request, PaginatorInterface $paginator) // Nous ajoutons les paramètres requis
     {
-        $repository = $this->getDoctrine()->getRepository(Facture::class);
-        $facture = $repository->findAll();
+        // Méthode findBy qui permet de récupérer les données avec des critères de filtre et de tri
+        $donnees = $this->getDoctrine()->getRepository(Facture::class)->findall();
 
-        //$step = $facture->getReservation();
-        dump($facture);
-        //dump($step);
+        $facture = $paginator->paginate(
+            $donnees, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            6 // Nombre de résultats par page
+        );
 
         return $this->render('facture/index.html.twig', [
             'factures' => $facture,

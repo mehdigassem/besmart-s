@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Controller;
+use Knp\Component\Pager\PaginatorInterface; // Nous appelons le bundle KNP Paginator
+
+
 
 use App\Entity\Facture;
 use App\Entity\Reservation;
@@ -10,6 +13,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+
 
 /**
  * @Route("/reservation")
@@ -19,12 +25,16 @@ class ReservationController extends AbstractController
     /**
      * @Route("/", name="reservation_front", methods={"GET"})
      */
-    public function index(ReservationRepository $reservationRepository): Response
+    public function index(Request $request, PaginatorInterface $paginator) // Nous ajoutons les paramètres requis
     {
-        dump($reservationRepository);
+        // Méthode findBy qui permet de récupérer les données avec des critères de filtre et de tri
+        $donnees = $this->getDoctrine()->getRepository(Reservation::class)->findall();
 
-        $repository = $this->getDoctrine()->getRepository(Reservation::class);
-        $reservation = $repository->findAll();
+        $reservation = $paginator->paginate(
+            $donnees, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            3 // Nombre de résultats par page
+        );
         return $this->render('reservation/index.html.twig', [
             'reservations' => $reservation,
         ]);
@@ -95,5 +105,28 @@ class ReservationController extends AbstractController
         }
 
         return $this->redirectToRoute('reservation_index', [], Response::HTTP_SEE_OTHER);
+    }
+    /**
+     * @Route("/{id}/email", methods={"GET","POST"} , name="mail")
+     */
+    public function sendEmail(MailerInterface $mailer,Reservation $reservation): Response
+    {
+        $mail = (new Email())
+            ->from('mehdi.gassem@esprit.tn')
+            ->to($reservation->getEmail())
+            //->cc('cc@example.com')
+            //->bcc('bcc@example.com')
+            //->replyTo('fabien@example.com')
+            //->priority(Email::PRIORITY_HIGH)
+            ->subject('Time for Symfony Mailer!')
+            ->text('Sending emails is fun again!')
+            ->html('<p>Votre resrvation sur le <strong> Quiz </strong> a été confirmer</p>');
+
+        $mailer->send($mail);
+
+        return $this->redirectToRoute('reservation_index', [], Response::HTTP_SEE_OTHER);
+
+
+
     }
 }

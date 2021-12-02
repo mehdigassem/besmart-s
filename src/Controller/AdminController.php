@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Calendar;
 use App\Entity\Facture;
 use App\Entity\Reservation;
+use App\Form\CalendarType;
 use App\Form\FactureType;
+use App\Repository\CalendarRepository;
 use App\Repository\FactureRepository;
 use App\Repository\ReservationRepository;
+use DateInterval;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,10 +24,32 @@ class AdminController extends AbstractController
     /**
      * @Route("/", name="admin")
      */
-    public function index(): Response
+    public function index(CalendarRepository $calendar): Response
     {
+        $events = $calendar->findAll();
+
+        $rdvs = [];
+
+        foreach($events as $event){
+            $rdvs[] = [
+                'id' => $event->getId(),
+                'start' => $event->getStart()->format('Y-m-d H:i:s'),
+                'end' => $event->getEnd()->format('Y-m-d H:i:s'),
+                'title' => $event->getTitle(),
+                'description' => $event->getDescription(),
+                'backgroundColor' => $event->getBackgroundColor(),
+                'borderColor' => $event->getBorderColor(),
+                'textColor' => $event->getTextColor(),
+                'allDay' => $event->getAllDay(),
+            ];
+        }
+
+        $data = json_encode($rdvs);
+
+
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
+            'data' =>$data
         ]);
     }
 

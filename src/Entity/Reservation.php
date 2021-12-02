@@ -32,6 +32,11 @@ class Reservation
      */
     private $facture;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
 
 
     public function getId(): ?int
@@ -64,6 +69,18 @@ class Reservation
     }
     public function __toString() {
         return $this->date_reservation;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
     }
 
 }

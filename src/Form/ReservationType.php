@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Reservation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,6 +16,7 @@ class ReservationType extends AbstractType
         $builder
             ->add('date_reservation',DateTimeType::class)
             ->add('facture')
+            ->add('email',EmailType::class )
         ;
     }
 

@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use DateInterval;
+
 
 /**
  * @Route("/calendar")
@@ -40,6 +42,8 @@ class CalenderController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $startDate = new \DateTime($form['start']->getData()->format('Y-m-d H:i:s'));
+             $calendar->setEnd($startDate->add(new DateInterval('PT60M')));
             $entityManager->persist($calendar);
             $entityManager->flush();
 

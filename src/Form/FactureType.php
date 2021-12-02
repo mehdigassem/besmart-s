@@ -24,4 +24,5 @@ class FactureType extends AbstractType
             'data_class' => Facture::class,
         ]);
     }
+
 }
