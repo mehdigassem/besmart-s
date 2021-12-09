@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Free Bootstrap Themes by Zerotheme dot com - Free Responsive Html5 Templates">
+    <meta name="author" content="www.Zerotheme.com">
+
+    <title> {% block title %} Be Smart {% endblock %} </title>
+    <!-- Bootstrap Core CSS -->
+
+    <!-- Custom CSS -->
+    {% block css %}
+        <link rel="stylesheet" href="{{ asset('/base-front/css/reset.css') }}"> <!-- CSS reset -->
+        <link rel="stylesheet" href="{{ asset('/base-front/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('/base-front/css/animated-logo.min.css') }}"><!-- Logo -->
+        <link rel="stylesheet" href="{{ asset ('/base-front/css/our-team.css') }}">
+        <link rel="stylesheet" href="{{ asset('/base-front/css/bootstrap.min.css') }}" >
+        <!-- Resource style -->
+    {% endblock %}
+    <!-- Custom Fonts -->
+    {% block css2 %}
+        <link href="{{ asset ('/base-front/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    {% endblock %}
+    <!-- Js -->
+    {% block js1 %}
+    <script src="{{ asset('/base-front/js/modernizr.js') }}"></script> <!-- Modernizr -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset ('/base-front/js/html5shiv.js') }}"></script>
+    <script src="{{ asset ('/base-front/js/respond.min.js') }}"></script>
+ {% endblock %}
+    <![endif]-->
+</head>
+
+<!-- Navigation -->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">Be Smart</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#page-top">Home</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#services">Services</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#new">New</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#about">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#team">Team</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+</div>
+</nav>
+
+<!--    -->
+
+<header id="page-top">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="o-container">
+                    <div class="c-slack">
+                        <span class="c-slack__dot c-slack__dot--a"></span>
+                        <span class="c-slack__dot c-slack__dot--b"></span>
+                        <span class="c-slack__dot c-slack__dot--c"></span>
+                        <span class="c-slack__dot c-slack__dot--d"></span>
+                    </div>
+                </div>
+                <div class="intro-text">
+                    <div class="intro-lead-in">Welcome To Our School!</div>
+                    <div class="intro-heading">It's Nice To Meet You</div>
+                </div>
+                <a class="btn btn-1 btn-sm" href="#about">About Us</a>
+                <a class="btn btn-1 btn-sm" href="#team">Our Team</a>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+    {%  block body %}
+
+    {%  endblock %}
+
+<footer>
+    <div class="wrap-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-footer footer-1">
+                    <div class="heading"><h4>About Us</h4></div>
+                    <div class="content">
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, dolore magna aliquam erat volutpat. </p>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-footer footer-2">
+                    <div class="heading"><h4>Your Email</h4></div>
+                    <div class="content">
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Consectetuer adipiscing elit, dolore magna aliquam erat volutpat. </p>
+                        <div class="subcribe-form" >
+                            <form method="get" action="/search" id="subcribe">
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-lg" name="subcribe" placeholder="Enter your email address...  " required="required" />
+                                </div>
+                                <button type="submit" name="Submit" class="btn btn-4 f-left">Subcribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-footer footer-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="#"><img src="{{ asset('images/15.jpg') }}" /></a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#"><img src="{{ asset('images/16.jpg') }}" /></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="#"><img src="{{ asset('images/17.jpg') }}" /></a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#"><img src="{{ asset('images/18.jpg') }}" /></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="#"><img src="{{ asset('images/19.jpg') }}" /></a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#"><img src="{{ asset('images/20.jpg') }}" /></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="#"><img src="{{ asset('images/21.jpg') }}" /></a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#"><img src="{{ asset('images/18.jpg') }}" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Copyright &copy; Your Website - Designed by <a href="https://www.Zerotheme.com">Zerotheme</a></p>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-google"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer -->
+
+
+<!-- jQuery -->
+{% block js2 %}
+    <script src="{{ asset ('/base-front/js/jquery-2.1.1.js') }}"></script>
+    <script src="{{ asset('/base-front/js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ asset ('/base-front/js/jquery.flexslider-min.js') }}"></script>
+    <script src="{{ asset ('/base-front/js/main.js') }}"></script> <!-- Resource jQuery -->
+
+                                                                     <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset ('/base-front/js/bootstrap.min.js') }}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ asset ('/base-front/js/agency.js') }}"></script>
+
+    <!-- Animated Top -->
+    <script src="{{ asset ('/base-front/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset ('/base-front/js/classie.js') }}"></script>
+    <script src="{{ asset ('/base-front/js/cbpAnimatedHeader.js') }}"></script>
+
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Tous les réclamations {% endblock %}
+
+{% block body %}
+    <h1>Liste des réclamations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="0.5">Id</th>
+                <th colspan="0.5">Nom</th>
+                <th colspan="0.5">Prenom</th>
+                <th colspan="0.5">Tel</th>
+                <th colspan="0.5">Email</th>
+                <th colspan="0.5">Description</th>
+                <th colspan="0.5">Date</th>
+                <th colspan="0.5"> Etat</th>
+                <th colspan="0.5">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for clientrec in clientrecs %}
+            <tr>
+                <td>{{ clientrec.id }}</td>
+                <td>{{ clientrec.nom }}</td>
+                <td>{{ clientrec.prenom }}</td>
+                <td>{{ clientrec.tel }}</td>
+                <td>{{ clientrec.email }}</td>
+                <td>{{ clientrec.description }}</td>
+                <td>{{ clientrec.date|date('Y-m-d H:i:s') }}</td>
+                <td>{{ clientrec.etat }}</td>
+
+                <td>
+                    <a href="{{ path('reclamations_show', {'id': clientrec.id}) }}">show</a>
+
+                </td>
+                <td>
+                    <a href="{{ path('reclamations_edit', {'id': clientrec.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(clientrecs) }}
+
+
+
+    <a href="{{ path('reclamations_new') }}">Create new</a>
+
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clientrec{% endblock %}
+
+{% block body %}
+    <h1>Clientrec</h1>
+    <table class="table"  >
+        <tbody>
+            <tr >
+                <th>Id</th>
+                <td>{{ clientrec.id }}</td>
+            </tr>
+            <tr >
+                <th>Nom</th>
+                <td>{{ clientrec.nom }}</td>
+            </tr>
+            <tr >
+                <th>Prenom</th>
+                <td>{{ clientrec.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ clientrec.tel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ clientrec.email }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ clientrec.description }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ clientrec.date ? clientrec.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>etat</th>
+                <td>{{ clientrec.etat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <a href="{{ path('reclamations_index'  )}}">back to list</a>
+
+    <a href="{{ path('reclamations_edit', {'id': clientrec.id}) }}">edit</a>
+
+    {{ include('reclamations/_delete_form.html.twig') }}
+
+
+
+
+
+
+{% endblock %}
