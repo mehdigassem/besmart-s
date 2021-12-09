@@ -44,6 +44,8 @@
         {% endfor %}
         </tbody>
     </table>
+    {{ knp_pagination_render(calendars) }}
 
-  <a href="{{ path('calendar_new') }}">Create new</a>
+
+    <a href="{{ path('calendar_new') }}">Create new</a>
 {% endblock %}
