@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Clientrec{% endblock %}
+
+{% block body %}
+    <h1> Ajouter une réclamation </h1>
+
+ {{ include('reclamations/_form.html.twig') }}
+
+    <a href="{{ path('reclamations_index') }}">back to list</a>
+
+{% endblock %}
